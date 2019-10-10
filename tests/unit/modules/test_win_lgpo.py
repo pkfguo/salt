@@ -8,7 +8,6 @@ from __future__ import absolute_import, unicode_literals, print_function
 import os
 
 # Import Salt Testing Libs
-from tests.support.helpers import destructiveTest
 from tests.support.mixins import LoaderModuleMockMixin
 from tests.support.mock import MagicMock, Mock, patch
 from tests.support.unit import TestCase, skipIf
@@ -28,6 +27,9 @@ import salt.ext.six as six
 opts = salt.config.DEFAULT_MINION_OPTS.copy()
 utils = salt.loader.utils(opts)
 modules = salt.loader.minion_mods(opts, utils=utils)
+
+import pytest
+
 
 LOADER_DICTS = {
     win_lgpo: {
@@ -500,7 +502,7 @@ class WinLGPOPolicyInfoMechanismsTestCase(TestCase, LoaderModuleMockMixin):
         expected = 'Not configured'
         self.assertEqual(result, expected)
 
-    @destructiveTest
+    @pytest.mark.destructive_test
     def test_adv_audit_mechanism(self):
         '''
         Test getting the policy value using the AdvAudit mechanism
@@ -547,7 +549,7 @@ class WinLGPOPolicyInfoMechanismsTestCase(TestCase, LoaderModuleMockMixin):
         self.assertEqual(result, expected)
 
 
-@destructiveTest
+@pytest.mark.destructive_test
 @skipIf(not salt.utils.platform.is_windows(), 'System is not Windows')
 class WinLGPOGetPointAndPrintNCTestCase(TestCase, LoaderModuleMockMixin):
     '''
@@ -640,7 +642,7 @@ class WinLGPOGetPointAndPrintNCTestCase(TestCase, LoaderModuleMockMixin):
         self.assertDictEqual(result, expected)
 
 
-@destructiveTest
+@pytest.mark.destructive_test
 @skipIf(not salt.utils.platform.is_windows(), 'System is not Windows')
 class WinLGPOGetPointAndPrintENTestCase(TestCase, LoaderModuleMockMixin):
     '''
