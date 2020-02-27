@@ -36,7 +36,7 @@ from tests.support.mixins import AdaptedConfigurationTestCaseMixin, LoaderModule
 from tests.support.helpers import get_unused_localhost_port, requires_system_grains, patched_environ
 from tests.support.runtests import RUNTIME_VARS
 from tests.support.mock import patch
-from pytestsalt.utils import SaltDaemonScriptBase as _SaltDaemonScriptBase, terminate_process
+from saltfactories.utils.processes import terminate_process, SaltDaemonScriptBase as _SaltDaemonScriptBase
 
 log = logging.getLogger(__name__)
 

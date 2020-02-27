@@ -15,15 +15,15 @@ from __future__ import absolute_import
 import logging
 
 # Import pytest-salt libs
-from pytestsalt.utils import collect_child_processes, terminate_process, terminate_process_list  # pylint: disable=unused-import
-from pytestsalt.fixtures.daemons import Salt as PytestSalt
-from pytestsalt.fixtures.daemons import SaltKey as PytestSaltKey
-from pytestsalt.fixtures.daemons import SaltRun as PytestSaltRun
-from pytestsalt.fixtures.daemons import SaltCall as PytestSaltCall
-from pytestsalt.fixtures.daemons import SaltMaster as PytestSaltMaster
-from pytestsalt.fixtures.daemons import SaltMinion as PytestSaltMinion
-from pytestsalt.fixtures.daemons import SaltSyndic as PytestSaltSyndic
-from pytestsalt.fixtures.daemons import SaltProxy as PytestSaltProxy
+from saltfactories.utils.processes import collect_child_processes, terminate_process, terminate_process_list  # pylint: disable=unused-import
+from saltfactories.utils.processes import SaltCLI as PytestSalt
+from saltfactories.utils.processes import SaltKeyCLI as PytestSaltKey
+from saltfactories.utils.processes import SaltRunCLI as PytestSaltRun
+from saltfactories.utils.processes import SaltCallCLI as PytestSaltCall
+from saltfactories.utils.processes import SaltMaster as PytestSaltMaster
+from saltfactories.utils.processes import SaltMinion as PytestSaltMinion
+from saltfactories.utils.processes import SaltSyndic as PytestSaltSyndic
+from saltfactories.utils.processes import SaltProxyMinion as PytestSaltProxy
 
 # Import tests support libs
 from tests.support.cli_scripts import ScriptPathMixin

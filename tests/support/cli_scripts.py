@@ -13,7 +13,7 @@ import sys
 import logging
 
 # Import Pytest Salt libs
-from pytestsalt.utils import cli_scripts
+from saltfactories.utils import cli_scripts
 
 log = logging.getLogger(__name__)
 
@@ -37,6 +37,7 @@ def get_script_path(bin_dir, script_name):
             script_name=script_name,
             executable=sys.executable,
             code_dir=RUNTIME_VARS.CODE_DIR,
+            inject_coverage='COVERAGE_PROCESS_START' in os.environ,
             inject_sitecustomize='COVERAGE_PROCESS_START' in os.environ
         )
     log.info('Returning script path %r', script_path)
