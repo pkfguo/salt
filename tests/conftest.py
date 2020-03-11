@@ -1233,42 +1233,6 @@ def pytest_saltfactories_syndic_configuration_overrides(
     """
 
 
-@pytest.hookspec(firstresult=True)
-def pytest_saltfactories_generate_default_proxy_minion_configuration(
-    request, factories_manager, proxy_minion_id, master_port
-):
-    """
-    Hook which should return a dictionary tailored for the provided proxy_minion_id
-
-    Stops at the first non None result
-    """
-
-
-@pytest.hookspec(firstresult=True)
-def pytest_saltfactories_proxy_minion_configuration_overrides(
-    request, factories_manager, root_dir, proxy_minion_id, default_options
-):
-    """
-    Hook which should return a dictionary tailored for the provided proxy_minion_id.
-    This dictionary will override the default_options dictionary.
-
-    Stops at the first non None result
-    """
-    if proxy_minion_id == "proxy":
-        with salt.utils.files.fopen(os.path.join(RUNTIME_VARS.CONF_DIR, 'proxy')) as rfh:
-            opts = yaml.deserialize(rfh.read())
-    else:
-        raise RuntimeError(
-            "Not prepared to handle proxy minion_id '{}'".format(proxy_minion_id)
-        )
-
-    opts['hosts.file'] = root_dir.join('hosts').strpath
-    opts['aliases.file'] = root_dir.join('aliases').strpath
-    opts['transport'] = request.config.getoption('--transport')
-
-    return opts
-
-
 @pytest.fixture(scope='session', autouse=True)
 def bridge_pytest_and_runtests(reap_stray_processes,
                                base_env_state_tree_root_dir,

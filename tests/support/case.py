@@ -450,11 +450,11 @@ class ShellCase(ShellTestCase, AdaptedConfigurationTestCaseMixin, ScriptPathMixi
             os.chdir(INTEGRATION_TEST_DIR)
 
     def run_salt(self, arg_str, with_retcode=False, catch_stderr=False,  # pylint: disable=W0221
-            timeout=RUN_TIMEOUT, popen_kwargs=None):
+                 timeout=RUN_TIMEOUT, popen_kwargs=None, config_dir=None):
         '''
         Execute salt
         '''
-        arg_str = '-c {0} -t {1} {2}'.format(RUNTIME_VARS.TMP_CONF_DIR, timeout, arg_str)
+        arg_str = '-c {0} -t {1} {2}'.format(config_dir or RUNTIME_VARS.TMP_CONF_DIR, timeout, arg_str)
         ret = self.run_script('salt',
                               arg_str,
                               with_retcode=with_retcode,
