@@ -16,6 +16,7 @@ import shutil
 import subprocess
 
 # Import Salt Testing libs
+from tests.support.runtests import RUNTIME_VARS
 from tests.support.case import TestCase
 from tests.support.cli_scripts import ScriptPathMixin
 from tests.support.helpers import get_unused_localhost_port
@@ -63,7 +64,7 @@ class TestEventReturn(AdaptedConfigurationTestCaseMixin, ScriptPathMixin, TestCa
             [
                 self.get_script_path('master'),
                 '-c',
-                self.config_dir,
+                RUNTIME_VARS.TMP_CONF_DIR,
                 '-l',
                 'info'
             ],

@@ -20,6 +20,7 @@ import salt.utils.files
 import salt.utils.path
 
 # Import Salt Testing libs
+from tests.support.runtests import RUNTIME_VARS
 from tests.support.case import ShellCase
 from tests.integration.utils import testprogram
 
@@ -199,7 +200,7 @@ class RetcodeTestCase(ShellCase):
                 fhw.write(fhr.read())
             retcode = self.run_script(
                 'salt',
-                '-c {0} -t 5 minion2 test.ping'.format(self.config_dir),
+                '-c {0} -t 5 minion2 test.ping'.format(RUNTIME_VARS.TMP_CONF_DIR),
                 with_retcode=True,
                 timeout=60)[1]
             assert retcode == salt.defaults.exitcodes.EX_GENERIC, retcode

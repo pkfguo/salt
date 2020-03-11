@@ -159,7 +159,7 @@ class CloudTest(ShellCase):
         if not hasattr(self, '_provider_config'):
             self._provider_config = cloud_providers_config(
                 os.path.join(
-                    self.config_dir,
+                    RUNTIME_VARS.TMP_CONF_DIR,
                     'cloud.providers.d',
                     self.PROVIDER + '.conf'
                 )
@@ -171,7 +171,7 @@ class CloudTest(ShellCase):
         if not hasattr(self, '_config'):
             self._config = cloud_config(
                 os.path.join(
-                    self.config_dir,
+                    RUNTIME_VARS.TMP_CONF_DIR,
                     'cloud.profiles.d',
                     self.PROVIDER + '.conf'
                 )

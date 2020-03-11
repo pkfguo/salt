@@ -205,7 +205,7 @@ class CallTest(ShellCase, testprogram.TestProgramCase, ShellCaseCommonTestsMixin
             _ = self.run_script(
                 'salt-call',
                 '-c {0} --output-file={1} test.versions'.format(
-                    self.config_dir,
+                    RUNTIME_VARS.TMP_MINION_CONF_DIR,
                     output_file_append
                 ),
                 catch_stderr=True,
@@ -218,7 +218,7 @@ class CallTest(ShellCase, testprogram.TestProgramCase, ShellCaseCommonTestsMixin
             self.run_script(
                 'salt-call',
                 '-c {0} --output-file={1} --output-file-append test.versions'.format(
-                    self.config_dir,
+                    RUNTIME_VARS.TMP_MINION_CONF_DIR,
                     output_file_append
                 ),
                 catch_stderr=True,
@@ -240,7 +240,7 @@ class CallTest(ShellCase, testprogram.TestProgramCase, ShellCaseCommonTestsMixin
                 self.run_script(
                     'salt-call',
                     '-c {0} --output-file={1} -l trace -g'.format(
-                        self.config_dir,
+                        RUNTIME_VARS.TMP_MINION_CONF_DIR,
                         output_file
                     ),
                     catch_stderr=True,
@@ -257,7 +257,7 @@ class CallTest(ShellCase, testprogram.TestProgramCase, ShellCaseCommonTestsMixin
                 self.run_script(
                     'salt-call',
                     '-c {0} --output-file={1} --output-file-append -g'.format(
-                        self.config_dir,
+                        RUNTIME_VARS.TMP_MINION_CONF_DIR,
                         output_file
                     ),
                     catch_stderr=True,
@@ -278,7 +278,7 @@ class CallTest(ShellCase, testprogram.TestProgramCase, ShellCaseCommonTestsMixin
                 self.run_script(
                     'salt-call',
                     '-c {0} --output-file={1} -g'.format(
-                        self.config_dir,
+                        RUNTIME_VARS.TMP_MINION_CONF_DIR,
                         output_file
                     ),
                     catch_stderr=True,

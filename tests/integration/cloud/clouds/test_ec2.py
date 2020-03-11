@@ -72,7 +72,7 @@ class EC2Test(CloudTest):
         super(EC2Test, self).setUp()
 
     def override_profile_config(self, name, data):
-        conf_path = os.path.join(self.config_dir, 'cloud.profiles.d', 'ec2.conf')
+        conf_path = os.path.join(RUNTIME_VARS.TMP_CONF_DIR, 'cloud.profiles.d', 'ec2.conf')
         with salt.utils.files.fopen(conf_path, 'r') as fp:
             conf = yaml.safe_load(fp)
         conf[name].update(data)
@@ -86,7 +86,7 @@ class EC2Test(CloudTest):
         returned.
         '''
         src = os.path.join(RUNTIME_VARS.FILES, name)
-        dst = os.path.join(self.config_dir, name)
+        dst = os.path.join(RUNTIME_VARS.TMP_CONF_DIR, name)
         with salt.utils.files.fopen(src, 'rb') as sfp:
             with salt.utils.files.fopen(dst, 'wb') as dfp:
                 dfp.write(sfp.read())
