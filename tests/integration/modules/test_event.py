@@ -24,6 +24,7 @@ from salt.ext.six.moves.queue import Queue, Empty  # pylint: disable=import-erro
 
 
 @pytest.mark.windows_whitelisted
+@pytest.mark.usefixtures('salt_sub_minion')
 class EventModuleTest(ModuleCase):
     def __test_event_fire_master(self):
         events = Queue()

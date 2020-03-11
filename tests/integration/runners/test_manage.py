@@ -12,6 +12,7 @@ import pytest
 
 
 @pytest.mark.windows_whitelisted
+@pytest.mark.usefixtures('salt_sub_minion')
 class ManageTest(ShellCase):
     '''
     Test the manage runner

@@ -26,9 +26,12 @@ from salt.exceptions import (
     EauthAuthenticationError
 )
 
+import pytest
+
 log = logging.getLogger(__name__)
 
 
+@pytest.mark.usefixtures('salt_sub_minion')
 class NetapiClientTest(TestCase):
     eauth_creds = {
         'username': 'saltdev_auto',

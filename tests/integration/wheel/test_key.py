@@ -14,6 +14,7 @@ import pytest
 
 
 @pytest.mark.windows_whitelisted
+@pytest.mark.usefixtures('salt_sub_minion')
 class KeyWheelModuleTest(TestCase, AdaptedConfigurationTestCaseMixin):
     def setUp(self):
         self.wheel = salt.wheel.Wheel(dict(self.get_config('client_config')))

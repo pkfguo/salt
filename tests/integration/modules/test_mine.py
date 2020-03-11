@@ -18,6 +18,7 @@ import pytest
 
 
 @pytest.mark.windows_whitelisted
+@pytest.mark.usefixtures('salt_sub_minion')
 class MineTest(ModuleCase, ShellCase):
     '''
     Test the mine system

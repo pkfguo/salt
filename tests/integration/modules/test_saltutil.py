@@ -22,6 +22,7 @@ import pytest
 
 
 @pytest.mark.windows_whitelisted
+@pytest.mark.usefixtures('salt_sub_minion')
 class SaltUtilModuleTest(ModuleCase):
     '''
     Testcase for the saltutil execution module
